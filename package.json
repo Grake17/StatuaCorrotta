@@ -1,0 +1,27 @@
+{
+  "name": "statuacorrotta",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "discord.js": "^12.1.1"
+  },
+  " engine " : {
+    " node " : "v12.16.1" ,
+    "npm " : "6.13.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Grake17/StatuaCorrotta.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Grake17/StatuaCorrotta/issues"
+  },
+  "homepage": "https://github.com/Grake17/StatuaCorrotta#readme"
+}
