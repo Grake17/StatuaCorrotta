@@ -5,7 +5,7 @@ const token = process.env.token
 
 client.on("ready", () =>{
     console.log("connect as " + client.user.tag +" ")
-    let utenti = client.guilds.cache.get("697902605875019916").memberCount;              
+    let utenti = client.guilds.cache.get("685818099383140353").memberCount;              
     let args = utenti + " Membri";                   
     client.user.setActivity(args, {type: "WATCHING"});
 })
@@ -29,13 +29,13 @@ client.on("message", message =>{
 })
 
 client.on("guildMemberAdd", member => {    
-    let utenti = client.guilds.cache.get("697902605875019916").memberCount;              
+    let utenti = client.guilds.cache.get("685818099383140353").memberCount;              
     let args = utenti + " Membri";                   
     client.user.setActivity(args, {type: "WATCHING"});
 })
 
 client.on("guildMemberRemove", member => {    
-    let utenti = client.guilds.cache.get("697902605875019916").memberCount;              
+    let utenti = client.guilds.cache.get("685818099383140353").memberCount;              
     let args = utenti + " Membri";                   
     client.user.setActivity(args, {type: "WATCHING"});
 })
