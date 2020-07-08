@@ -10,7 +10,6 @@ const lista = require("./lista/lista")
 const recluta = require("./recluta/recluta")
 const congeda = require("./congeda/congeda")
 const diserta = require("./diserta/diserta")
-const sposta = require("./sposta/sposta")
 
 let bot
 let text
@@ -26,54 +25,40 @@ module.exports = (message,client) =>{
     bot = client
     text = message
     leader = config.capo    
-    if(message.content == ">c help"){
-        if(message.channel.id == config.canale){
+    if(message.content == ">c help"){        
 
-            help(message,client)
-
-        }
-    }else if(message.content == ">c compagnia"){  
-        if(message.channel.id == config.canale){
-
-            trova()        
-            lista(message,client,tuoclan,nome,leader)
-
-        }
-    }else if(message.content.startsWith(">c recluta")){
-        if(message.channel.id == config.canale){
-
-            trova()
-            altro()
-            recluta(message,client,tuoclan,utente,leader,nonclan)
-        }
-
-    }else if(message.content.startsWith(">c congeda")){
-        if(message.channel.id == config.canale){
-
-            trova()        
-            congeda(message,client,tuoclan,utente,leader)
-
-        }
-    }else if(message.content == ">c diserta"){
-        if(message.channel.id == config.canale){
-
-            trova()
-            diserta(message,client,tuoclan,leader)
+        help(message,client)
         
-        }
-    }else if(message.content.startsWith(">c sposta")){
+    }else if(message.content == ">c compagnia"){          
 
-        sposta(message,client,utente)
+        trova()        
+        lista(message,client,tuoclan,nome,leader)
+        
+    }else if(message.content.startsWith(">c recluta")){        
 
+        trova()
+        altro()
+        recluta(message,client,tuoclan,utente,leader,nonclan)        
+
+    }else if(message.content.startsWith(">c congeda")){        
+
+        trova()        
+        congeda(message,client,tuoclan,utente,leader)
+        
+    }else if(message.content == ">c diserta"){
+
+        trova()
+        diserta(message,client,tuoclan,leader)        
+        
     }else if (message.content.startsWith(">c")){
-        if(message.channel.id == config.canale){
-            const embed = new MessageEmbed()
-            .setTitle("⚙️ Mh, qualcosa è andato storto... ⚙️")
-            .setDescription("Sintassi Comando errata o comando inesistente")
-            .setColor(0x565656)
-            message.channel.send(embed)
-            logcomando()
-        }
+
+        const embed = new MessageEmbed()
+        .setTitle("⚙️ Mh, qualcosa è andato storto... ⚙️")
+        .setDescription("Sintassi Comando errata o comando inesistente")
+        .setColor(0x565656)
+        message.channel.send(embed)
+        logcomando()
+
     }    
 }
 

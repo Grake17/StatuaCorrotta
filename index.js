@@ -14,18 +14,25 @@ client.login(token)
 
 //Var Compagnie
 const compagnie = require("./clan/compagnie")
-
+const sposta = require("./sposta/sposta")
 
 client.on("message", message =>{
     if(message.guild != null){
         if(message.author.bot != true){
-            
-            if(message.content.startsWith(config.prefix + "c")){
-                compagnie(message,client)
-            }            
+            if(message.channel.id == config.canale1 || message.channel.id == config.canale2){
+                if(message.content.startsWith(config.prefix + "c")){
+
+                    compagnie(message,client)
+                
+                }        
+            }else if(message.content.startsWith(">c sposta")){
+
+                let utente = message.guild.member(message.mentions.members.first());
+                sposta(message,client,utente)
+
+            }           
         } 
-    }
-      
+    }      
 })
 
 client.on("guildMemberAdd", member => {    
