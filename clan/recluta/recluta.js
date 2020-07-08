@@ -18,7 +18,7 @@ module.exports = (message,client,tuoclan,utente,leader,nonclan) => {
         if(utente.user.bot != true){                                             
             if(message.member.roles.cache.has(leader) && message.member.roles.cache.has(tuoclan)){
                 let clan = message.guild.roles.cache.get(tuoclan).members.size                                    
-                if(clan < 51){                                                      
+                if(clan < 101){                                                      
                     if(utente.roles.cache.has(nonclan)){
                         const embed = new MessageEmbed()
                         .setTitle("⚠️ ATTENZIONE ⚠️")
