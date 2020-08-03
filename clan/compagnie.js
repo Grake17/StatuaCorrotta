@@ -10,6 +10,8 @@ const lista = require("./lista/lista")
 const recluta = require("./recluta/recluta")
 const congeda = require("./congeda/congeda")
 const diserta = require("./diserta/diserta")
+const promote = require("./promote/promote")
+const demotion = require("./demotion/demotion")
 
 let bot
 let text
@@ -48,7 +50,15 @@ module.exports = (message,client) =>{
     }else if(message.content == ">c diserta"){
 
         trova()
-        diserta(message,client,tuoclan,leader)        
+        diserta(message,client,tuoclan,leader)
+        
+    }else if(message.content.startsWith(">c promote")){
+
+        promote(message,client,utente,leader)
+
+    }else if(message.content.startsWith(">c demotion")){
+
+        demotion(message,client,utente,leader)  
         
     }else if (message.content.startsWith(">c")){
 

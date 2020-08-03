@@ -3,12 +3,11 @@ const client = new Discord.Client();
 const { Client, MessageEmbed } = require('discord.js');
 const config = require("./config.json")
 
-
 let text
 let bot
 
-
 module.exports = (message,client,tuoclan,utente,leader,nonclan) => {
+    
     text = message
     bot = client
     
@@ -16,7 +15,7 @@ module.exports = (message,client,tuoclan,utente,leader,nonclan) => {
         warning()
     }else{
         if(utente.user.bot != true){                                             
-            if(message.member.roles.cache.has(leader) && message.member.roles.cache.has(tuoclan)){
+            if((message.member.roles.cache.has(leader) || message.member.roles.cache.has(config.grado3)) && message.member.roles.cache.has(tuoclan)){
                 let clan = message.guild.roles.cache.get(tuoclan).members.size                                    
                 if(clan < 101){                                                      
                     if(utente.roles.cache.has(nonclan)){
@@ -27,13 +26,13 @@ module.exports = (message,client,tuoclan,utente,leader,nonclan) => {
                         message.channel.send(embed)
                         log()                  
                     }else{
-                        let name = message.member.roles.cache.get(tuoclan).name
                         const embed = new MessageEmbed()
                         .setTitle("🛡️ Statua Corrotta al suo servizio! 🛡️")
-                        .setDescription("🔰"+ name + ", date il benvenuto a <@!" + utente +"> 🔰")
+                        .setDescription("🔰 <@&"+ message.member.roles.cache.get(tuoclan) + ">, date il benvenuto a <@!" + utente +"> 🔰")
                         .addField("Utente reclutato con successo", "Che possa portare onore e gloria alla compagnia")
                         .setColor(0x00d000)
-                        utente.roles.add(tuoclan).catch(console.error);                                    
+                        utente.roles.add(tuoclan).catch(console.error);
+                        utente.roles.add(config.grado1).catch(console.error);                                              
                         message.channel.send(embed) 
                         logsi()
                     }                   
@@ -86,7 +85,7 @@ function logsi(){
 function nonpuoi(){
     const embed = new MessageEmbed()
     .setTitle("⚠️ ATTENZIONE ⚠️")
-    .setDescription("Non sei un Governatore!")
+    .setDescription("Non hai il permesso di eseguire questo comando!")
     .setColor(0xff0000)
     text.channel.send(embed)              
     log()

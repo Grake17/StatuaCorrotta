@@ -24,7 +24,15 @@ module.exports = (message,client,tuoclan,leader) => {
             .setDescription("🔰 Dove stai scappando <@!"+ message.author +"> 🔰")
             .addField("Compagnia disertata con successo","I disertori non sono ben visti, occhio alla forca!")
             .setColor(0x00d000)                                  
-            message.member.roles.remove(tuoclan).catch(console.error);                        
+            message.member.roles.remove(tuoclan).catch(console.error);
+            if(message.member.roles.cache.has(config.grado1)){
+                message.member.roles.remove(config.grado1).catch(console.error);
+            }else if(message.member.roles.cache.has(config.grado2)){
+                message.member.roles.remove(config.grado2).catch(console.error);
+            }else if(message.member.roles.cache.has(config.grado3)){
+                message.member.roles.remove(config.grado3).catch(console.error);
+            } 
+                
             message.channel.send(embed)
             logsi()           
     }else{

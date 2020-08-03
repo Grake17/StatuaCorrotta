@@ -16,14 +16,34 @@ module.exports = (message,client,tuoclan,utente,leader) => {
         if(utente.user.bot == true){
             warningbot()
         }else{
-            if(message.member.roles.cache.has(leader) && message.member.roles.cache.has(tuoclan)){
+            if((message.member.roles.cache.has(leader) || message.member.roles.cache.has(config.grado3) || message.member.roles.cache.has(config.grado2)) && message.member.roles.cache.has(tuoclan)){
                 if(message.author.id == utente.id){
+
                     const embed = new MessageEmbed()
                     .setTitle("⚠️ ATTENZIONE ⚠️")
-                    .setDescription("**Sei il Governatore**, per congedarti chiedi ad un admin!")
+                    .setDescription("Non puoi congedare te stesso!")
                     .setColor(0xff0000)
                     message.channel.send(embed)
                     log()
+
+                }else if((message.member.roles.cache.has(config.grado3) || message.member.roles.cache.has(config.grado3)) && (utente.roles.cache.has(config.grado3) || utente.roles.cache.has(config.grado2))){
+                    
+                    const embed = new MessageEmbed()
+                    .setTitle("⚠️ ATTENZIONE ⚠️")
+                    .setDescription("Non puoi congedare un utente con un grado uguale al tuo!")
+                    .setColor(0xff0000)
+                    message.channel.send(embed)
+                    log() 
+
+                }else if(message.member.roles.cache.has(config.grado2) && utente.roles.cache.has(config.grado3)){
+
+                    const embed = new MessageEmbed()
+                    .setTitle("⚠️ ATTENZIONE ⚠️")
+                    .setDescription("Non puoi congedare un tuo superiore!")
+                    .setColor(0xff0000)
+                    message.channel.send(embed)
+                    log() 
+
                 }else{
                     if(utente.roles.cache.has(leader)){
                         const embed = new MessageEmbed()
@@ -32,14 +52,29 @@ module.exports = (message,client,tuoclan,utente,leader) => {
                         .setColor(0xff0000)
                         message.channel.send(embed)
                         log()                      
-                    }else if(utente.roles.cache.has(tuoclan)){
-                        let name = message.member.roles.cache.get(tuoclan).name
+                    }else if(utente.roles.cache.has(tuoclan)){                       
+
                         const embed = new MessageEmbed()
                         .setTitle("🛡️ Statua Corrotta al suo servizio! 🛡️")
-                        .setDescription("🔰 "+ name + ", date un ultimo saluto a <@!"+ utente +"> 🔰 ")
+                        .setDescription("🔰 <@&"+ message.member.roles.cache.get(tuoclan) + ">, date un ultimo saluto a <@!"+ utente +"> 🔰 ")
                         .addField("Utente congedato con successo","Mancherai alla tua compagnia, o forse no....")
-                        .setColor(0x00d000)                                  
-                        message.guild.members.cache.get(utente.id).roles.remove(tuoclan).catch(console.error);                        
+                        .setColor(0x00d000)   
+
+                        message.guild.members.cache.get(utente.id).roles.remove(tuoclan).catch(console.error);
+
+                        if(utente.roles.cache.has(config.grado1)){
+
+                            message.guild.members.cache.get(utente.id).roles.remove(config.grado1).catch(console.error);
+
+                        }else if(utente.roles.cache.has(config.grado2)){
+
+                            message.guild.members.cache.get(utente.id).roles.remove(config.grado2).catch(console.error);
+
+                        }else if(utente.roles.cache.has(config.grado3)){
+
+                            message.guild.members.cache.get(utente.id).roles.remove(config.grado3).catch(console.error);
+
+                        }                       
                         message.channel.send(embed)                                        
                         logsi()
                     }else{ 
@@ -90,7 +125,7 @@ function logsi(){
 function nonpuoi(){
     const embed = new MessageEmbed()
     .setTitle("⚠️ ATTENZIONE ⚠️")
-    .setDescription("Non sei un Governatore!")
+    .setDescription("Non hai il permesso di eseguire questo comando!")
     .setColor(0xff0000)
     text.channel.send(embed)              
     log()

@@ -28,7 +28,7 @@ client.on("message", message =>{
                 if(message.content.startsWith(config.prefix + "c")){
 
                     compagnie(message,client)
-                
+
                 }        
             }          
         } 
