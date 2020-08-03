@@ -19,20 +19,20 @@ module.exports = (message,client,tuoclan,nome,leader) => {
         let x = 0
         let y = 0
         let z = 0
-        let name = message.member.roles.cache.get(tuoclan).name                           
+        let name = message.member.roles.cache.get(tuoclan)                          
         const embed = new MessageEmbed()
         .setTitle("🛡️ Statua Corrotta al suo servizio! 🛡️")
         .setColor(0x00d000)
         if(n < 11){
-            embed.setDescription("🏷️ Nome: " + name + " \n 👥 Membri: " + n + "\n 🔰 Fazione: " + nome + "\n 🌟 Livello: ⭐")
+            embed.setDescription("🏷️ Nome: <@&" + name + "> \n 👥 Membri: " + n + "\n 🔰 Fazione: " + nome + "\n 🌟 Livello: ⭐")
         }else if(n < 21){
-            embed.setDescription("🏷️ Nome: " + name + " \n 👥 Membri: " + n + "\n 🔰 Fazione: " + nome + "\n 🌟 Livello: ⭐⭐")
+            embed.setDescription("🏷️ Nome: <@&" + name + "> \n 👥 Membri: " + n + "\n 🔰 Fazione: " + nome + "\n 🌟 Livello: ⭐⭐")
         }else if(n < 31){
-            embed.setDescription("🏷️ Nome: " + name + " \n 👥 Membri: " + n + "\n 🔰 Fazione: " + nome + "\n 🌟 Livello: ⭐⭐⭐")
+            embed.setDescription("🏷️ Nome: <@&" + name + "> \n 👥 Membri: " + n + "\n 🔰 Fazione: " + nome + "\n 🌟 Livello: ⭐⭐⭐")
         }else if(n < 41){
-            embed.setDescription("🏷️ Nome: " + name + " \n 👥 Membri: " + n + "\n 🔰 Fazione: " + nome + "\n 🌟 Livello: ⭐⭐⭐⭐")
+            embed.setDescription("🏷️ Nome: <@&" + name + "> \n 👥 Membri: " + n + "\n 🔰 Fazione: " + nome + "\n 🌟 Livello: ⭐⭐⭐⭐")
         }else{
-            embed.setDescription("🏷️ Nome: " + name + " \n 👥 Membri: " + n + "\n 🔰 Fazione: " + nome + "\n 🌟 Livello: ⭐⭐⭐⭐⭐")
+            embed.setDescription("🏷️ Nome: <@&" + name + "> \n 👥 Membri: " + n + "\n 🔰 Fazione: " + nome + "\n 🌟 Livello: ⭐⭐⭐⭐⭐")
         } 
         while(n != x){
             while(y != m){                                                                                                          
