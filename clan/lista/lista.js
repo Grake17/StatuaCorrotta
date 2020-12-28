@@ -13,6 +13,13 @@ module.exports = (message,client,tuoclan,nome,leader) => {
     bot = client
     if(message.member.roles.cache.has(tuoclan)){                                     
         let clan = message.guild.roles.cache.get(tuoclan).members.map(m=>m.user.tag)
+
+        let membersWithRole = message.guild.members.cache.filter(member => { 
+            return member.roles.find("name", "🔥 Custodi Del Chaos");
+        }).map(member => {
+            return member.user.username;
+        })
+        console.log(membersWithRole)
         let n = message.guild.roles.cache.get(tuoclan).members.size
         let capo = message.guild.roles.cache.get(leader).members.map(m=>m.user.tag)
         let m = message.guild.roles.cache.get(leader).members.size                      

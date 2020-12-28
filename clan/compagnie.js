@@ -12,6 +12,7 @@ const congeda = require("./congeda/congeda")
 const diserta = require("./diserta/diserta")
 const promote = require("./promote/promote")
 const demotion = require("./demotion/demotion")
+const crea = require("./crea/crea")
 
 let bot
 let text
@@ -58,7 +59,11 @@ module.exports = (message,client) =>{
 
     }else if(message.content.startsWith(">c demotion")){
 
-        demotion(message,client,utente,leader)  
+        demotion(message,client,utente,leader)
+
+    }else if(message.content.startsWith(">c demotion")){
+
+        crea(message,client,leader,tuoclan)  
         
     }else if (message.content.startsWith(">c")){
 
