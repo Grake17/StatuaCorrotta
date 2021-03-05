@@ -10,7 +10,7 @@ client.on("ready", () =>{
     client.user.setActivity(args, {type: "WATCHING"});
 })
 
-client.login("Njg2ODg3NDcyMTIyNDI5NDk2.Xmdvzw.Gttt5Ln4SlrpcKcjJ5Ps0XVmj88")
+client.login("tokenhere")
 
 //Var Compagnie
 const compagnie = require("./clan/compagnie")
